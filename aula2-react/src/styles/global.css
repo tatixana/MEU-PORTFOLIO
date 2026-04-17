@@ -1,0 +1,338 @@
+/* ================= GLOBAL.CSS ================= */
+/* Estilos globais adicionais e animações extras */
+/* Este arquivo complementa o App.css */
+
+/* ================= RESET E CONFIGURAÇÕES BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================= ANIMAÇÕES GLOBAIS ================= */
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animação de slide-up */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação de slide-down */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação de slide-left */
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animação de slide-right */
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animação de zoom-in */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animação de pulsação suave */
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Animação de brilho */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 77, 166, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 77, 166, 0.6);
+  }
+}
+
+/* Animação de rotação suave */
+@keyframes softRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= CLASSES DE ANIMAÇÃO ================= */
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease forwards;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.6s ease forwards;
+}
+
+.animate-slideLeft {
+  animation: slideLeft 0.6s ease forwards;
+}
+
+.animate-slideRight {
+  animation: slideRight 0.6s ease forwards;
+}
+
+.animate-zoomIn {
+  animation: zoomIn 0.5s ease forwards;
+}
+
+.animate-pulse {
+  animation: softPulse 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* ================= DELAYS PARA ANIMAÇÕES ================= */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+/* ================= SCROLLBAR PERSONALIZADA ================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff4da6, #ff79c6);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff79c6, #ffb3d9);
+}
+
+/* ================= SELEÇÃO DE TEXTO ================= */
+::selection {
+  background: rgba(255, 77, 166, 0.3);
+  color: #ffb3d9;
+}
+
+::-moz-selection {
+  background: rgba(255, 77, 166, 0.3);
+  color: #ffb3d9;
+}
+
+/* ================= LOADING SPINNER ================= */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 77, 166, 0.2);
+  border-top-color: #ff4da6;
+  border-radius: 50%;
+  animation: softRotate 1s linear infinite;
+  margin: 20px auto;
+}
+
+/* ================= TOOLTIP PERSONALIZADO ================= */
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffb3d9;
+  font-size: 0.75rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+[data-tooltip]:hover:before {
+  opacity: 1;
+}
+
+/* ================= BOTÕES COM RIPPLE EFFECT ================= */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple-btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* ================= CARDS COM HOVER GLOW ================= */
+.glow-card {
+  transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+  box-shadow: 0 0 20px rgba(255, 77, 166, 0.4);
+  transform: translateY(-5px);
+}
+
+/* ================= TEXTO COM GRADIENTE ================= */
+.gradient-text {
+  background: linear-gradient(135deg, #ff4da6, #ff79c6, #ffb3d9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* ================= DIVISORES DECORATIVOS ================= */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff4da6, #ff79c6);
+  border-radius: 3px;
+  margin: 20px auto;
+}
+
+.divider-vertical {
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(180deg, #ff4da6, #ff79c6);
+  border-radius: 3px;
+  margin: 0 auto;
+}
+
+/* ================= BADGES ================= */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(255, 77, 166, 0.15);
+  border: 1px solid rgba(255, 77, 166, 0.3);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  color: #ffb3d9;
+  margin: 4px;
+}
+
+/* ================= RESPONSIVE UTILITIES ================= */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+  body::before,
+  body::after {
+    display: none;
+  }
+  
+  .hero-glow {
+    display: none;
+  }
+  
+  .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
